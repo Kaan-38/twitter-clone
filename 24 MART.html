@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<style type="text/css">
+	*{margin: 0; padding: 0; box-sizing: border-box; }
+	body {background:#e3e3e3; box-shadow: 0 0 12px #e3e3e3; display: flex; align-items: center; justify-content: center; overflow-x: hidden;}
+	body::-webkit-scrollbar {width:8px; background: red; border-radius: 4px;	}
+	body::-webkit-scrollbar-thumb {background:#00acee;}
+	body::-webkit-scrollbar-track {background: white;	}
+    .container-kapsam {position: relative; width:92%; display: flex; height:auto;justify-content: space-between;}
+	nav {position: fixed; width: 300px; height:100vh; background:white; box-shadow:0 0 18px white; top: 10px; overflow: hidden scroll;}
+	nav::-webkit-scrollbar {width: 6px; background:white;}
+	nav::-webkit-scrollbar-thumb {background:#00acee;}
+	nav::-webkit-scrollbar-track {background: white;}
+	nav.active {width: 70px;}
+	nav.active h4 {display: none;}
+    nav span i {color: #00acee; font-size:50px; text-shadow: 0 0 3px #00acee; position: relative; left: 10px;}
+    nav span {position: relative; display: flex; align-items: center; cursor: pointer; color: black; text-shadow: 0 0 3px black; margin-bottom: 10px; top: 14px;}
+    nav .span {height: 66px; position: relative;}
+    nav .span label {width: 5px; height: 42px; background: white; box-shadow: 0 0 14px white; position: absolute; left: 2px; display: none;}
+    nav .span.active label , nav .span:hover label {display: block;}
+    nav .span:hover, nav .span.active {background-color:#00acee; box-shadow: 0 0 20px #00acee;}
+    nav span.active, nav .span:hover {color: white; text-shadow: 0 0 3px white;}
+    nav span h4 {position: relative; left:68px;}
+    nav span h5 {font-size: 40px; position: absolute; left: 23px;}
+    nav span ion-icon {font-size: 36px; position: absolute; left: 14px;}
+
+    nav span h3 {width:80%; height:48px; background:#00acee; box-shadow: 0 0 14px #00acee; border-radius: 22px; display: flex; align-items: center ;justify-content: center; color: white; text-shadow: 0 0 3px white; }
+    nav span h3:hover {transform: scale(1.04);}
+    #tweet-ortala {display: flex; align-items: center; justify-content: center;}
+    
+
+    nav .open {width: 37px; height: 37px; border-radius: 50%; background:#00acee; box-shadow: 0 0 16px #00acee; display: flex ; align-items: center; justify-content: center; color: white; font-size: 25px; position: absolute; left: 88%; top:20px; z-index: 1; display: none;}
+   nav .open:hover {transform: scale(1.03);}
+   nav .open.active ion-icon {transform: rotate(180deg);}
+
+
+    section {width:calc(100% - 330px); height:auto;  position: relative; left: 315px; display: flex; justify-content: space-between;}
+   section.active {width: calc(100% - 110px); left: 95px;}
+   .section-left {position: relative; width: 64%; height:auto; background:white; box-shadow: 0 0 20px white; top: 10px;}
+   .section-left .home {position: relative; border-bottom: 2px solid black; height:40px; display: flex; align-items: center;}
+   .section-left .home h3 {position: relative; font-size:25px; color:#00acee; text-shadow: 0 0 3px #00acee; cursor: pointer; left: 10px;  }
+    
+     .section-left .post-kapsa {position: relative; width: 100%; height:auto; padding-bottom:48px; background:white; border-bottom: 2px solid black;}
+    .section-left label {position: relative; display: flex; top: 18px; left: 10px; cursor: pointer;}
+    .section-left .post-kapsa label img {width:49px; height:49px; border-radius: 50%; box-shadow:0 0 3px #00acee;}
+    .section-left label span {position: relative; left:14px;}
+    .section-left label input {width: 300px; height:36px; border-style: none; outline: none; box-shadow: 0 0 2px grey; color: black; text-shadow: 0 0 2px black;}
+    .section-left label input::placeholder {color: black; text-shadow: 0 0 2px black; position: relative; left: 3px;}
+
+    .section-left .post {display: flex; color:#00acee; position: relative; left:56px; top:40px; }
+    .section-left .post span {position: relative; margin-left: 18px; cursor: pointer;}
+    .section-left .post span ion-icon {font-size: 26px;}
+     
+    .section-left .post-kapsa h2 {width:124px; height: 34px; background:#00acee; box-shadow: 0 0 13px #00acee; border-radius: 22px; position: absolute; right:30px; bottom: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white ;text-shadow: 0 0 2px white; z-index: 1; font-size: 19px; letter-spacing: 2px;}
+    .section-left .post-kapsa h2:hover {transform: scale(1.03);}
+
+
+    
+
+    .section-left .gönderi {position: relative; width: 100%; height: auto; padding-bottom:34px; background:white; top:6px; border-bottom: 2px solid black; display: flex;}
+     .section-left .gönderi label {position: relative; margin-bottom: 18px; color:var(--clr); text-shadow: 0 0 2px var(--clr); }
+      .banner {display: flex; align-items: center; }
+      .banner h5 {position: relative; left:8px; color: grey; text-shadow: 0 0 2px grey;}
+    .section-left .gönderi label span h4 {opacity: 0.8;}
+    .section-left .gönderi label li {position: relative; display: flex;align-items: center; list-style-type: none; color: black; text-shadow: 0 0 2px black; text-align: center; margin-left:30px; left:-20px; top: 18px;}
+    .section-left .gönderi label li h5 {position: relative; left: 4px;}
+    .section-left .gönderi label li ion-icon {font-size: 27px;}
+    .section-left .gönderi label img {width: 58px; height: 58px;}
+    #save {position: relative; margin-left:44px;}
+
+    .section-left .gönderi .gönderi-div {position: relative; left: 15px;}
+   
+
+   .section-left .post-photo {width:400px; height: 350px; position: relative; position: relative;}
+   #post-photo {width:100%; height: 100%; border-radius: 0;}
+   .gönderi label img {width: 58px; height: 58px; border-radius: 50%; box-shadow:0 0 5px #00acee;}
+
+
+
+
+    .section-right {position:relative;  width:32%; height:1070px; background: white; box-shadow: 0 0 20px white; top: 10px; border-radius: 10px;}
+   
+    .section-right-message-ortala {display: flex; align-items: center; justify-content: center; position: relative; top: 10px;}
+    .section-right-message {width: 80%; height: 500px; background:#f7f7f7; box-shadow: 0 0 14px #f7f7f7; border-radius: 4px;}
+
+    .section-right-message-input-ortala {display: flex; align-items: center; justify-content: center;}
+    .section-right-message-input {width: 80%; height: 41px; background:#f7f7f7; box-shadow: 0 0 2px #00acee; display: flex; justify-content: space-between; align-items:center; border-radius: 22px;}
+    .section-right-message-input input {width:85%; height: 34px; background:white; color: black; text-shadow: 0 0 2px black; border-style: none; outline: none; font-size:14px; border-radius: 22px;  box-shadow: 0 0 1px #00acee; margin-right: 5px;}
+    .section-right-message-input input::placeholder {color: black; text-shadow: 0 0 2px black; position: relative; left:4px;}
+    .section-right-message-input ion-icon {color: black; position: relative; font-size: 26px; left:5px; cursor: pointer;}
+    
+
+
+    .twitter-trend-ortala {display: flex; align-items: center; justify-content: center; position: relative; top: 10px;}
+    .twitter-trend {width: 100%; height: 40px; background:white; box-shadow: 0 0 14px white;}
+    .trend-header {position: relative; display: flex; justify-content: space-between;width: 100%; background:none;height: 40px; align-items: center; border-bottom: 2px solid black;}
+    .trend-header span {position: relative; color:black; text-shadow:0 0 2px black; cursor: pointer; margin-left: 15px; margin-right: 15px;}
+    .trend-header span ion-icon {color: #00acee; font-size: 24.5px;}
+  
+
+    .twitter-trend-post-ortala {display: flex; align-items: center; justify-content: center; position: relative; top:15px;}
+    .twitter-trend-post {width: 100%; height: 400px; background:white; box-shadow: 0 0 16px white; overflow:hidden scroll;}
+    .twitter-trend-post::-webkit-scrollbar {width: 5px; display: none;}
+    .twitter-trend-post:hover::-webkit-scrollbar {display: block;}
+    .twitter-trend-post::-webkit-scrollbar-thumb {background:#00acee;} 
+    .twitter-trend-post::-webkit-scrollbar-track {background:black;}
+    .twitter-trend-post label {position: relative; color:grey; text-shadow: 0 0 2px grey; cursor: pointer; left:11px; line-height:22px;}
+    .twitter-trend-post label h4 {color: black; text-shadow: 0 0 2px black;}
+    .twitter-trend-post ul {position: relative; height:80px; border-bottom: 2px solid black; display: flex; flex-direction: column; justify-content: center; margin-bottom: 20px;}
+    .twitter-trend-post ul:hover {background-color:#00acee; box-shadow: 0 0 14px #00acee;}
+    .twitter-trend-post ul:hover label {color: white; text-shadow: 0 0 2px white;}
+    .twitter-trend-post ul:hover label h4 {color: white; text-shadow: 0 0 2px white;}
+    .twitter-trend-post ul ion-icon {position: absolute; right: 10px; font-size: 28px;}
+
+
+
+
+
+
+
+
+
+
+
+
+    .section-right-follow-ortala {display: flex; align-items: center; justify-content:center; position: relative; top: 24px;}
+    .section-right-follow {position:relative; width:80%; height:auto; background:#f7f7f7; box-shadow: 0 0 14px #f7f7f7; border-radius: 4px;}
+    .section-right-follow label {display: flex; align-items: center; position: relative; margin-bottom:6px; margin-left: 12px; margin-right: 12px; height:78px; cursor: pointer; border-bottom: 2px solid #00acee;}
+    .section-right-follow label:hover span,.section-right-follow label.active span {color: white; text-shadow: 0 0 2px white;}
+    .section-right-follow label:hover,.section-right-follow label.active {background-color:#00acee; box-shadow: 0 0 10px #00acee; border-bottom: 2px solid white;}
+    .section-right-follow label img {position: relative; left: 5px; width:57px; height: 57px; border-radius: 50%; box-shadow: 0 0 12px black;}
+    .section-right-follow label span {color: black; text-shadow: 0 0 2px black; position: relative; left: 12px;}
+    .section-right-follow label span h5 {opacity: 0.8;}
+    .section-right-follow label .follow {width: auto; height: 33px; padding-left:8px; padding-right: 8px; background: white;border:3px solid #00acee; color: #00acee; text-shadow: 0 0 2px #00acee; display: flex; align-items: center; justify-content: center; cursor:pointer; color:#00acee; border-radius: 22px; text-shadow: 0 0 2px #00acee; right: 4px; position: absolute;}
+    .section-right-follow label .follow:hover {transform: scale(1.03);}
+    .section-right-follow label.active .follow,.section-right-follow label:hover .follow {box-shadow: 0 0  10px grey; border: 0px solid white;}
+
+
+
+    
+   .bar-open {display: flex; align-items: center;}
+    .bar-open i {color:#00acee; font-size: 27px; position: relative; left: 2px; cursor: pointer; text-shadow: 0 0 10px #00acee; display:none;}
+    #right-icon {position: relative; font-size: 18px; left:4px;}
+    @media only screen and (max-width: 1600px) {
+   
+    	.section-right {width: 40%;}
+    	.section-left  {width: 58%;}
+   }
+   @media only screen and (max-width: 1380px) {
+    	.section-right {width: 40%;}
+    	.section-left  {width: 58%;}
+      .container-kapsam {width:98%;}
+    }
+
+     @media only screen and (max-width: 1290px) {
+      .section-right {display: none;}
+      .section-left  {width: 86%;}
+      .container-kapsam {width:82%;}
+    }
+
+       @media only screen and (max-width: 1190px) {
+      .container-kapsam {width:94%;}
+    }
+
+      @media only screen and (max-width: 1040px) {
+   
+      .section-left  {width: 98%;}
+      .container-kapsam {width:94%;}
+    }
+     @media only screen and (max-width: 970px) {
+      .section-left .post-photo{width: 330px;}
+    }
+
+      @media only screen and (max-width:870px) {
+    
+      .section-left .post-photo{width: 330px;}
+      nav {left:6px; width: 266px;}
+      section {left:276px;}
+      .section-left{width: 100%;}
+      .container-kapsam {width:99%;}
+    }
+    @media only screen and (max-width:800px) {
+    .bar-open i {display: block;}
+    .bar-open.active {position: relative; left: 210px;}
+    .bar-open.active #right-icon {transform: rotate(180deg);}
+     nav {left:6px; width:70px;}
+     nav.active {width: 290px; z-index: 10000;}
+     nav span h4 {display: none;}
+     nav.active span h4 {display: block;}
+     nav span h3 {display: none;}
+      section {left:93px; width: 80%;}
+      .section-left .post-photo{width: 370px;} 
+    }
+      @media only screen and (max-width:646px) {
+      .section-left .post-photo{width: 280px;} 
+      .section-left .post span{margin-left: 10px;}
+      .section-left .post span ion-icon {font-size:21px;}
+      .section-left .post-kapsa h2{width: 90px; height: 30px; font-size: 13.5px;}
+
+    }
+     @media only screen and (max-width:546px) {
+    
+    
+       section{left: 6px; width: 98%;}
+        .section-left .post-photo{width:320px;} 
+    }
+</style>
+</head>
+<body>
+<div class="container-kapsam">
+	
+	<nav>
+		<div class="open"><ion-icon name="chevron-back-outline"></ion-icon></div>
+		<span><i class="fa-brands fa-twitter"></i></span>
+		<br>
+		<span class="span active"><ion-icon name="home-outline"></ion-icon><h4>HOME</h4><label></label></span>
+		<span class="span"><h5>#</h5><h4>EXPLORE</h4><label></label></span>
+		<span class="span"><ion-icon name="notifications-outline"></ion-icon><h4>NOTİFİCATİONS</h4><label></label></span>
+		<span class="span"><ion-icon name="mail-outline"></ion-icon><h4>MESSAGES</h4><label></label></span>
+		<span class="span"><ion-icon name="bookmark-outline"></ion-icon><h4>BOOKMARKS</h4><label></label></span>
+		<span class="span"><ion-icon name="book-outline"></ion-icon><h4>LİSTS</h4><label></label></span>
+		<span class="span"><ion-icon name="person-outline"></ion-icon><h4>PROFİLE</h4><label></label></span>
+		<span class="span"><ion-icon name="ellipsis-horizontal-circle-outline"></ion-icon><h4>MORE</h4><label></label></span>
+		<span id="tweet-ortala"><h3>TWEET</h3></span>
+	</nav>
+
+	<section>
+		<div class="section-left">
+			<div class="home">
+				<div class="bar-open"><i class="fa-brands fa-twitter"></i><i class="fa-solid fa-angle-right" id="right-icon"></i></div>
+			 <h3>HOME</h3>            
+		</div>
+
+		     <div class="post-kapsa">
+		     	<h2>TWEET</h2>
+		     	<label>
+              	<img src="https://media-exp1.licdn.com/dms/image/C4E03AQGYTfDVuTekdw/profile-displayphoto-shrink_200_200/0/1646331015779?e=1658361600&v=beta&t=CBRda3jXdYSojvXWtQ5W-5KPr9B9UWfG7ZMF5K2i-os"><span><input type="text" name="" placeholder="What's Happening"></span> 
+
+            </label>
+            <div class="post">
+            	<span><ion-icon name="image-outline"></ion-icon></span>
+            	<span><ion-icon name="gift-outline"></ion-icon></span>
+            	<span><ion-icon name="stats-chart-outline"></ion-icon></span>
+            	<span><ion-icon name="happy-outline"></ion-icon></span>
+            	<span><ion-icon name="timer-outline"></ion-icon></span>
+            </div>
+		     </div>
+
+
+        
+        <div class="gönderi">
+		    	<label><img src="https://media-exp1.licdn.com/dms/image/C4E03AQGYTfDVuTekdw/profile-displayphoto-shrink_100_100/0/1646331015779?e=1658361600&v=beta&t=q7qEmOsLxTIkl8pTfXfWz5ehdoPY7WAou_DOhUxglcg"></label>
+		    	<div class="gönderi-div">
+		    	<label class="banner" style="--clr:black;"><h3>KAAN</h3><h5>@Kaan</h5></label>
+		    	<label style="--clr:grey;" class="post-photo"><img src="https://images.pexels.com/photos/5935788/pexels-photo-5935788.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" id="post-photo"></label>
+		    	<label style="--clr:grey;">
+		    		<li><ion-icon name="chatbubbles-outline"></ion-icon><h5>380</h5></li>
+		    		<li><ion-icon name="share-social-outline"></ion-icon><h5>120</h5></li>
+		    		<li><ion-icon name="heart-outline"></ion-icon><h5>950</h5></li>
+		    		<li id="save"><ion-icon name="archive-outline"></ion-icon></li>
+		    	</label>
+		    	</div>
+		    </div>
+
+
+
+
+		    <div class="gönderi">
+		    	<label><img src="https://media-exp1.licdn.com/dms/image/C4D0BAQE3aOp3cdsq6A/company-logo_100_100/0/1641456287876?e=1660780800&v=beta&t=-xT7oc-ekc1MzcC8MUt_B9azsnsQ_wW2fKJppMhbCw8"></label>
+		    	<div class="gönderi-div">
+		    	<label class="banner" style="--clr:black;"><h3>CLARUSWAY</h3><h5>@Clarusway</h5></label>
+		    	<label style="--clr:grey;" class="post-photo"><img src="https://media.istockphoto.com/photos/teamwork-with-futuristic-interface-picture-id1163919598?k=20&m=1163919598&s=612x612&w=0&h=jWgoFG3rkfFCdRBKo5RI1V-X4fFHKX5AT4MW8eOubc0=" id="post-photo"></label>
+		    	<label style="--clr:grey;">
+		    		<li><ion-icon name="chatbubbles-outline"></ion-icon><h5>380</h5></li>
+		    		<li><ion-icon name="share-social-outline"></ion-icon><h5>120</h5></li>
+		    		<li><ion-icon name="heart-outline"></ion-icon><h5>950</h5></li>
+		    		<li id="save"><ion-icon name="archive-outline"></ion-icon></li>
+		    	</label>
+		    	</div>
+		    </div>
+
+
+          <div class="gönderi">
+		    	<label><img src="https://media-exp1.licdn.com/dms/image/C4E03AQFBBdcCYjK1QA/profile-displayphoto-shrink_100_100/0/1651148593484?e=1658361600&v=beta&t=TOYJxfmkhiUlsQHX2_FZuENVZAk9iahZEtC7R0V-yDA"></label>
+		    	<div class="gönderi-div">
+		    	<label class="banner" style="--clr:black;"><h3>JAMES</h3><h5>@James</h5></label>
+		    			    	<label style="--clr:grey;" class="post-photo"><img src="https://media.istockphoto.com/photos/smart-female-it-programer-working-on-desktop-computer-in-data-center-picture-id1194430863?k=20&m=1194430863&s=612x612&w=0&h=jXs5pGuhn-Fy463zdQa0Ap6YRtJTr3-Yki_bMEs9pfs=" id="post-photo"></label>
+		    	<label style="--clr:grey;">
+		    		<li><ion-icon name="chatbubbles-outline"></ion-icon><h5>380</h5></li>
+		    		<li><ion-icon name="share-social-outline"></ion-icon><h5>120</h5></li>
+		    		<li><ion-icon name="heart-outline"></ion-icon><h5>950</h5></li>
+		    		<li id="save"><ion-icon name="archive-outline"></ion-icon></li>
+		    	</label>
+		    	</div>
+		    </div>
+
+		    <div class="gönderi">
+		    	<label><img src="https://media-exp1.licdn.com/dms/image/C4E03AQELlZAx3ZmQjg/profile-displayphoto-shrink_100_100/0/1560946142781?e=1658361600&v=beta&t=2zaxyX4AYClhD83SNgit_ZNN2v7rmNP-4-mTcdHvyB4"></label>
+		    	<div class="gönderi-div">
+		    	<label class="banner" style="--clr:black;"><h3>OLİVİA</h3><h5>@Olivia</h5></label>
+		    	<label style="--clr:grey;" class="post-photo"><img src="https://media.istockphoto.com/photos/data-scientists-male-programmer-using-laptop-analyzing-and-developing-picture-id1295900106?k=20&m=1295900106&s=612x612&w=0&h=hDkQP1a9dUo4Esv8iMyVlEnP4nfN2mwM5LdtPW9M8zo=" id="post-photo"></label>
+		    	<label style="--clr:grey;">
+		    		<li><ion-icon name="chatbubbles-outline"></ion-icon><h5>380</h5></li>
+		    		<li><ion-icon name="share-social-outline"></ion-icon><h5>120</h5></li>
+		    		<li><ion-icon name="heart-outline"></ion-icon><h5>950</h5></li>
+		    		<li id="save"><ion-icon name="archive-outline"></ion-icon></li>
+		    	</label>
+		    	</div>
+		    </div>
+
+
+		    <div class="gönderi">
+		    	<label><img src="https://media-exp1.licdn.com/dms/image/C4D03AQGPj6EU-cbt2g/profile-displayphoto-shrink_100_100/0/1645988964306?e=1658361600&v=beta&t=xk4QxY5gOUmYikMrqzWAhToZljxu_8ZDhBicwZBDbVs"></label>
+		    	<div class="gönderi-div">
+		    	<label class="banner" style="--clr:black;"><h3>STEPHAN</h3><h5>@Stephan</h5></label>
+		    	<label style="--clr:grey;" class="post-photo"><img src="https://media.istockphoto.com/photos/keeping-up-with-modern-advancements-picture-id1081869336?k=20&m=1081869336&s=612x612&w=0&h=0fUoqQ-eRFZXWuvJ3GIVrbmYHAzKEIg6pcu2fhbXQCw=" id="post-photo"></label>
+		    	<label style="--clr:grey;">
+		    		<li><ion-icon name="chatbubbles-outline"></ion-icon><h5>380</h5></li>
+		    		<li><ion-icon name="share-social-outline"></ion-icon><h5>120</h5></li>
+		    		<li><ion-icon name="heart-outline"></ion-icon><h5>950</h5></li>
+		    		<li id="save"><ion-icon name="archive-outline"></ion-icon></li>
+		    	</label>
+		    	</div>
+		    </div>
+
+
+		    <div class="gönderi">
+		    	<label><img src="https://media-exp1.licdn.com/dms/image/C4E03AQGW8G8XmJM7bA/profile-displayphoto-shrink_100_100/0/1636526317962?e=1658361600&v=beta&t=xd9ax5Eb7NMWhxioTWaHBiI3Qs0xvTQC0_fij9myhGI"></label>
+		    	<div class="gönderi-div">
+		    	<label class="banner" style="--clr:black;"><h3>JANET</h3><h5>@Janet</h5></label>
+		    	<label style="--clr:grey;" class="post-photo"><img src="https://media.istockphoto.com/photos/teamwork-with-futuristic-interface-picture-id1163919598?k=20&m=1163919598&s=612x612&w=0&h=jWgoFG3rkfFCdRBKo5RI1V-X4fFHKX5AT4MW8eOubc0=" id="post-photo"></label>
+		    	<label style="--clr:grey;">
+		    		<li><ion-icon name="chatbubbles-outline"></ion-icon><h5>380</h5></li>
+		    		<li><ion-icon name="share-social-outline"></ion-icon><h5>120</h5></li>
+		    		<li><ion-icon name="heart-outline"></ion-icon><h5>950</h5></li>
+		    		<li id="save"><ion-icon name="archive-outline"></ion-icon></li>
+		    	</label>
+		    	</div>
+		    </div>
+
+        <div class="gönderi">
+		    	<label><img src="https://media-exp1.licdn.com/dms/image/C4E0BAQG8Z55xihwvTw/company-logo_100_100/0/1560280656846?e=1660780800&v=beta&t=HLRfHmRzaDKgpGDyBJJ8JNwwKObf_5sRTQuqmB-inio"></label>
+		    	<div class="gönderi-div">
+		    	<label class="banner" style="--clr:black;"><h3>REACT</h3><h5>@React</h5></label>
+		    	<label style="--clr:grey;" class="post-photo"><img src="https://images.pexels.com/photos/5935791/pexels-photo-5935791.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" id="post-photo"></label>
+		    	<label style="--clr:grey;">
+		    		<li><ion-icon name="chatbubbles-outline"></ion-icon><h5>380</h5></li>
+		    		<li><ion-icon name="share-social-outline"></ion-icon><h5>120</h5></li>
+		    		<li><ion-icon name="heart-outline"></ion-icon><h5>950</h5></li>
+		    		<li id="save"><ion-icon name="archive-outline"></ion-icon></li>
+		    	</label>
+		    	</div>
+		    </div>
+
+		</div>
+
+
+
+
+		<div class="section-right">
+
+   <div class="section-right-message-ortala">
+   	<div class="section-right-message">
+   	 <div class="section-right-message-input-ortala">
+   	 	  <div class="section-right-message-input">
+   	   <ion-icon name="search"></ion-icon>	<input type="search" name="" placeholder="Search Twitter.." class="input">
+   	 </div>
+   	 </div>
+
+
+   	 <div class="twitter-trend-ortala">
+   	 	   <div class="twitter-trend">
+   	   <div class="trend-header">
+   	   	<span><h4>TRENDS FOR YOU</h4></span>
+   	   	<span><ion-icon name="settings-outline"></ion-icon></span>
+   	   </div>  	  
+   	 </div>
+   	 </div>
+    
+
+
+    <div class="twitter-trend-post-ortala">
+    <div class="twitter-trend-post">
+    
+    	 	<ul>
+    	 		<ion-icon name="ellipsis-horizontal"></ion-icon>
+    	 	 	<label><h5>POLİTİCS-TRENDİNG</h5></label>
+    	    <label><h4>#MİLLİ MÜCADELE</h4></label>
+    	    <label><h5>90M TWEETS</h5></label>
+    	 	</ul>
+
+    	 	<ul>
+    	 		<ion-icon name="ellipsis-horizontal"></ion-icon>
+    	 	 	<label><h5>POLİTİCS-TRENDİNG</h5></label>
+    	    <label><h4>#19MAYIS</h4></label>
+    	    <label><h5>180M TWEETS</h5></label>
+    	 	</ul>
+
+
+    	 	<ul>
+    	 		<ion-icon name="ellipsis-horizontal"></ion-icon>
+    	 	 	<label><h5>POLİTİCS-TRENDİNG</h5></label>
+    	    <label><h4>#M.K.ATATÜRK</h4></label>
+    	    <label><h5>390M TWEETS</h5></label>
+    	 	</ul>
+
+
+    	 	<ul>
+    	 		<ion-icon name="ellipsis-horizontal"></ion-icon>
+    	 	 	<label><h5>POLİTİCS-TRENDİNG</h5></label>
+    	    <label><h4>#BAĞIMSIZLIK</h4></label>
+    	    <label><h5>160M TWEETS</h5></label>
+    	 	</ul>
+
+    	 	<ul>
+    	 		<ion-icon name="ellipsis-horizontal"></ion-icon>
+    	 	 	<label><h5>POLİTİCS-TRENDİNG</h5></label>
+    	    <label><h4>#EY TÜRK GENÇLİĞİ</h4></label>
+    	    <label><h5>350M TWEETS</h5></label>
+    	 	</ul>
+
+
+    	 	<ul>
+    	 		<ion-icon name="ellipsis-horizontal"></ion-icon>
+    	 	 	<label><h5>POLİTİCS-TRENDİNG</h5></label>
+    	    <label><h4>#SAMSUNDAN</h4></label>
+    	    <label><h5>60M TWEETS</h5></label>
+    	 	</ul>
+
+
+
+    	 	<ul>
+    	 		<ion-icon name="ellipsis-horizontal"></ion-icon>
+    	 	 	<label><h5>POLİTİCS-TRENDİNG</h5></label>
+    	    <label><h4>#BAĞIMSIZLIK</h4></label>
+    	    <label><h5>90M TWEETS</h5></label>
+    	 	</ul>
+    	 
+    </div>
+    </div>
+
+
+
+
+
+   </div>
+   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			  <div class="section-right-follow-ortala">
+			  	  <div class="section-right-follow">
+           <label class="follow-label active"><img src="https://media-exp1.licdn.com/dms/image/C4D0BAQE3aOp3cdsq6A/company-logo_100_100/0/1641456287876?e=1660780800&v=beta&t=-xT7oc-ekc1MzcC8MUt_B9azsnsQ_wW2fKJppMhbCw8"><span><h4>CLARUSWAY</h4><h5>@Clarusway</h5></span><div class="follow">FOLLOW</div></label>
+
+           <label class="follow-label"><img src="https://media-exp1.licdn.com/dms/image/C4E0BAQG8Z55xihwvTw/company-logo_100_100/0/1560280656846?e=1660780800&v=beta&t=HLRfHmRzaDKgpGDyBJJ8JNwwKObf_5sRTQuqmB-inio"><span><h4>REACT</h4><h5>@React</h5></span><div class="follow">FOLLOW</div></label>
+
+           <label class="follow-label"><img src="https://media-exp1.licdn.com/dms/image/C4E0BAQHbBBpO1E0m9g/company-logo_200_200/0/1648809600852?e=1660780800&v=beta&t=OCNX3okAEDU94qXOvZYZWpc4xg24RfyPOEz6iK4hCek"><span><h4>JAVASCRİPT</h4><h5>@Javascript</h5></span><div class="follow">FOLLOW</div></label>
+
+           <label class="follow-label"><img src="https://media-exp1.licdn.com/dms/image/C4E03AQFBBdcCYjK1QA/profile-displayphoto-shrink_100_100/0/1651148593484?e=1658361600&v=beta&t=TOYJxfmkhiUlsQHX2_FZuENVZAk9iahZEtC7R0V-yDA"><span><h4>JAMES</h4><h5>@James</h5></span><div class="follow">FOLLOW</div></label>
+
+           <label class="follow-label"><img src="https://media-exp1.licdn.com/dms/image/C4E03AQG3TX7RVeVCow/profile-displayphoto-shrink_100_100/0/1590584195780?e=1658361600&v=beta&t=fXMxyvvS3O8A9h43YE3dutvAXQaArfi3x2mQjlswLow"><span><h4>ALAN</h4><h5>@Alan</h5></span><div class="follow">FOLLOW</div></label>
+
+           <label class="follow-label"><img src="https://media-exp1.licdn.com/dms/image/C4D0BAQEiHHXXOqGfdQ/company-logo_200_200/0/1590504403572?e=1660780800&v=beta&t=F6FrE7Qk2-8W6I3AjGkpMuwpt-3oy2QLJD0laXCN5FI"><span><h4>NODE.JS</h4><h5>@Node.js</h5></span><div class="follow">FOLLOW</div></label>
+			  </div>
+			  </div>
+
+
+
+		</div>
+	</section>
+
+</div>
+
+
+
+
+<script type="text/javascript">
+  const baropen = document.querySelector('.bar-open');
+	const followlabel = document.querySelectorAll('.follow-label');
+	const section = document.querySelector('section');
+	const open = document.querySelector('.open');
+	const nav = document.querySelector('nav');
+	const span = document.querySelectorAll('.span');
+  
+  	function searchMenu(){
+	const searchInput = document.querySelector(".input");
+	searchInput.addEventListener("keyup",function(){
+		let data = this.value.toUpperCase();
+		let li = document.querySelectorAll(".twitter-trend-post ul");
+	for( let i = 0; i < li.length; i++) {
+		console.log([i].innerHTML);
+	        if(li[i].innerHTML.toUpperCase().indexOf(data) > -1) {
+	        	li[i].style.display = "";
+	        }else{ 
+                        li[i].style.display = "none";
+	        }
+	}
+	});
+	}
+
+searchMenu();
+
+	function activeLink(){
+		span.forEach((item)=>
+		item.classList.remove('active'));
+		this.classList.add('active');
+	}
+	span.forEach((item) =>
+	item.addEventListener('click',activeLink));
+  
+ function active(){
+		followlabel.forEach((item)=>
+		item.classList.remove('active'));
+		this.classList.add('active');
+	}
+	followlabel.forEach((item) =>
+	item.addEventListener('click',active));
+
+
+	baropen.addEventListener('click',()=>{
+		nav.classList.toggle('active');
+		baropen.classList.toggle('active');
+		section.classList.toggle('active');
+	})
+</script>
+</body>
+</html>
